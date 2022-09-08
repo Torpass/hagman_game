@@ -11,6 +11,19 @@ def word_selecition():
         f= f.readlines()
     word = f[a]
     return word
+
+def normalize(word):
+    replacements = (
+        ("á", "a"),
+        ("é", "e"),
+        ("í", "i"),
+        ("ó", "o"),
+        ("ú", "u"),
+    )
+    for a, b in replacements:
+        word = word.replace(a, b)
+        word= word.lower()
+    return word
             
 
 def dict_generator(palabra):
@@ -33,7 +46,7 @@ def comparation(dict, largo):
             list_str= ''.join(list)
             print(list_str)
             if i == '_':
-                letra=input('Letra: ')
+                letra=input('Ingrese una letra: ')
                 for key,value in dict.items():
                     if value == letra:
                         list.pop(key)
@@ -47,7 +60,9 @@ def comparation(dict, largo):
 
     
 def run():
-    game_word=word_selecition()
+    word=word_selecition()
+    game_word=normalize(word)
+    print(game_word)
     dict,largo=dict_generator(game_word)
     lista_aciertos= comparation(dict, largo)
     
