@@ -12,6 +12,7 @@ def word_selecition():
     word = f[a]
     return word
 
+
 def normalize(word):
     replacements = (
         ("á", "a"),
@@ -23,12 +24,13 @@ def normalize(word):
     for a, b in replacements:
         word = word.replace(a, b)
         word= word.lower()
+        
     return word
             
 
 def dict_generator(palabra):
     largo=len(palabra)-1
-    palabra= palabra.replace('\n','')
+    word= palabra.replace('\n','')
     values_list=list(palabra)
     keys_list=[x for x in range(0,largo+1)]
     dict_word = dict(zip(keys_list, values_list))
